@@ -114,7 +114,7 @@ class DictSchema(ListSchema):
         for k in obj.keys():
             if not isinstance(k, str):
                 raise KeyError("Only support flattening dictionaries if keys are str.")
-        keys = sorted(obj.keys())
+        keys = obj.keys()
         values = [obj[k] for k in keys]
         ret, schema = ListSchema.flatten(values)
         return ret, cls(schema.schemas, schema.sizes, keys)
